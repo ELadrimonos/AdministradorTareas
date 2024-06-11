@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrador de Tareas</title>
+    <link href="estilos.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<form id="formulario" onsubmit="crearTarea();return false;" >
+    <label for="nombre">Nombre de la tarea: </label>
+    <input type="text" name="nombre" id="nombre" required>
+    <label for="tiempo">Tiempo estimado de trabajo: </label>
+    <input type="text" required name="tiempo" id="tiempo" pattern="^(\d+:\d{1,2}|\d+)$" placeholder="Horas(x):Minutos(1,2) o Minutos(x)">
+    <label for="fechaMax">Fecha máxima de finalización: </label><input required type="date" name="fechaMax" id="fechaMax">
+    <label for="fechaAlta">Fecha alta de la tarea: </label><input required type="date" name="fechaAlta" id="fechaAlta">
+    <label for="estado">Estado de la tarea: </label>
+    <select name="estado" id="estado">
+        <option value="PENDIENTE" selected>PENDIENTE</option>
+        <option value="EN PROCESO">EN PROCESO</option>
+        <option value="REALIZADA">REALIZADA</option>
+    </select>
+    <label for="descripcion">Descripción de la tarea: </label><textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+    <input type="submit"  value="Agregar Tarea" id="botonCrear">
+</form>
+<section class="listaTareas">
+    <h1>Administrador de tareas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th><a class="descendente" onclick="ordenar(2,this)">Tiempo estimado</a></th>
+<!--                En el enunciado se dice que se pueda ordenar por fecha maxima-->
+                <th><a class="descendente" onclick="ordenar(3,this)">Fecha plazo máximo</a></th>
+                <th>Fecha de alta</th>
+                <th>Estado</th>
+                <th>Descripcion</th>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody  id="tablaTareas">
+
+        </tbody>
+    </table>
+</section>
+<script src="script.js"></script>
+</body>
+</html>
